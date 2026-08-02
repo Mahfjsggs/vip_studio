@@ -86,6 +86,9 @@ class HomeScreen extends StatelessWidget {
                   title: 'محرر النصوص',
                   subtitle: 'اكتب وطوّر أفكارك بسهولة',
                   color: const Color(0xFFD4AF37),
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (_) => const ComingSoonPage('محرر النصوص')));
+                  },
                 ),
                 const SizedBox(height: 16),
                 _FeatureCard(
@@ -93,6 +96,9 @@ class HomeScreen extends StatelessWidget {
                   title: 'قوالب الأغلفة',
                   subtitle: 'اختر من مكتبة تصاميم جاهزة',
                   color: const Color(0xFFBB86FC),
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (_) => const ComingSoonPage('قوالب الأغلفة')));
+                  },
                 ),
                 const SizedBox(height: 16),
                 _FeatureCard(
@@ -100,6 +106,9 @@ class HomeScreen extends StatelessWidget {
                   title: 'نصائح ذكية',
                   subtitle: 'حسّن محتواك بتوصيات مخصصة',
                   color: const Color(0xFF4FC3F7),
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (_) => const ComingSoonPage('نصائح ذكية')));
+                  },
                 ),
               ],
             ),
@@ -115,67 +124,95 @@ class _FeatureCard extends StatelessWidget {
   final String title;
   final String subtitle;
   final Color color;
+  final VoidCallback onTap;
 
   const _FeatureCard({
     required this.icon,
     required this.title,
     required this.subtitle,
     required this.color,
+    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(18),
-      decoration: BoxDecoration(
-        color: const Color(0xFF17171F),
-        borderRadius: BorderRadius.circular(18),
-        border: Border.all(color: Colors.white.withValues(alpha: 0.06)),
-        boxShadow: [
-          BoxShadow(
-            color: color.withValues(alpha: 0.08),
-            blurRadius: 20,
-            offset: const Offset(0, 8),
-          ),
-        ],
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.all(18),
+        decoration: BoxDecoration(
+          color: const Color(0xFF17171F),
+          borderRadius: BorderRadius.circular(18),
+          border: Border.all(color: Colors.white.withOpacity(0.06)),
+          boxShadow: [
+            BoxShadow(
+              color: color.withOpacity(0.08),
+              blurRadius: 20,
+              offset: const Offset(0, 8),
+            ),
+          ],
+        ),
+        child: Row(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: color.withOpacity(0.15),
+                borderRadius: BorderRadius.circular(14),
+              ),
+              child: Icon(icon, color: color, size: 26),
+            ),
+            const SizedBox(width: 16),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: GoogleFonts.tajawal(
+                      fontSize: 17,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    subtitle,
+                    style: GoogleFonts.tajawal(
+                      fontSize: 13,
+                      color: Colors.white60,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const Icon(Icons.arrow_forward_ios_rounded,
+                color: Colors.white38, size: 16),
+          ],
+        ),
       ),
-      child: Row(
-        children: [
-          Container(
-            padding: const EdgeInsets.all(12),
-            decoration: BoxDecoration(
-              color: color.withValues(alpha: 0.15),
-              borderRadius: BorderRadius.circular(14),
-            ),
-            child: Icon(icon, color: color, size: 26),
-          ),
-          const SizedBox(width: 16),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: GoogleFonts.tajawal(
-                    fontSize: 17,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  subtitle,
-                  style: GoogleFonts.tajawal(
-                    fontSize: 13,
-                    color: Colors.white60,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          const Icon(Icons.arrow_forward_ios_rounded,
-              color: Colors.white38, size: 16),
-        ],
+    );
+  }
+}
+
+class ComingSoonPage extends StatelessWidget {
+  final String title;
+  const ComingSoonPage(this.title, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(title, style: GoogleFonts.tajawal()),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+      ),
+      body: Center(
+        child: Text(
+          '$title\nقريباً', 
+          textAlign: TextAlign.center, 
+          style: GoogleFonts.tajawal(fontSize: 24, fontWeight: FontWeight.bold)
+        )
       ),
     );
   }
