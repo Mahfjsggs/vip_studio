@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'text_editor_screen.dart'; // هذا سطر جديد ضفناه
 
 void main() {
   runApp(const VipStudioApp());
@@ -87,7 +88,7 @@ class HomeScreen extends StatelessWidget {
                   subtitle: 'اكتب وطوّر أفكارك بسهولة',
                   color: const Color(0xFFD4AF37),
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (_) => const ComingSoonPage('محرر النصوص')));
+                    Navigator.push(context, MaterialPageRoute(builder: (_) => const TextEditorScreen())); // غيرناه
                   },
                 ),
                 const SizedBox(height: 16),
