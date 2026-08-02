@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'text_editor_screen.dart'; // هذا سطر جديد ضفناه
+import 'text_editor_screen.dart';
+import 'templates_screen.dart';
+import 'tips_screen.dart'; // ضفنا استيراد النصائح
 
 void main() {
   runApp(const VipStudioApp());
@@ -88,7 +90,7 @@ class HomeScreen extends StatelessWidget {
                   subtitle: 'اكتب وطوّر أفكارك بسهولة',
                   color: const Color(0xFFD4AF37),
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (_) => const TextEditorScreen())); // غيرناه
+                    Navigator.push(context, MaterialPageRoute(builder: (_) => const TextEditorScreen()));
                   },
                 ),
                 const SizedBox(height: 16),
@@ -98,7 +100,7 @@ class HomeScreen extends StatelessWidget {
                   subtitle: 'اختر من مكتبة تصاميم جاهزة',
                   color: const Color(0xFFBB86FC),
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (_) => const ComingSoonPage('قوالب الأغلفة')));
+                    Navigator.push(context, MaterialPageRoute(builder: (_) => const TemplatesScreen()));
                   },
                 ),
                 const SizedBox(height: 16),
@@ -108,7 +110,7 @@ class HomeScreen extends StatelessWidget {
                   subtitle: 'حسّن محتواك بتوصيات مخصصة',
                   color: const Color(0xFF4FC3F7),
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (_) => const ComingSoonPage('نصائح ذكية')));
+                    Navigator.push(context, MaterialPageRoute(builder: (_) => const TipsScreen())); // ربطناه
                   },
                 ),
               ],
@@ -191,29 +193,6 @@ class _FeatureCard extends StatelessWidget {
                 color: Colors.white38, size: 16),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class ComingSoonPage extends StatelessWidget {
-  final String title;
-  const ComingSoonPage(this.title, {super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(title, style: GoogleFonts.tajawal()),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
-      body: Center(
-        child: Text(
-          '$title\nقريباً', 
-          textAlign: TextAlign.center, 
-          style: GoogleFonts.tajawal(fontSize: 24, fontWeight: FontWeight.bold)
-        )
       ),
     );
   }
