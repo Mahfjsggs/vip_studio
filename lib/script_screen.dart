@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'voice_screen.dart';
 
 class ScriptScreen extends StatefulWidget {
   const ScriptScreen({super.key});
@@ -11,32 +12,12 @@ class ScriptScreen extends StatefulWidget {
 class _ScriptScreenState extends State<ScriptScreen> {
   final TextEditingController _controller = TextEditingController();
   String _script = '';
+  bool _isVip = false;
 
-  void _generateScript() {
-    if (_controller.text.isEmpty) {
-      setState(() => _script = 'اكتب موضوع الفيديو اول');
-      return;
-    }
-
-    // وهمي لحد ما نربط جيميني
+  void _generate() {
+    if (_controller.text.isEmpty) return;
     setState(() {
-      _script = '''🎬 سكريبت فيديو: ${_controller.text}
-المدة: 30 ثانية
-
-[0-3 ثانية - الهوك]
-"وقف! اذا تريد تعرف عن ${_controller.text} كمل الفيديو للاخير"
-
-[4-15 ثانية - القيمة]
-"اغلب الناس يغلطون بهاي النقطة مال ${_controller.text}. 
-السر هو انك لازم... 1... 2... 3..."
-
-[16-25 ثانية - الدليل]
-"انا جربتها وخلال اسبوع شفت نتيجة. شوفوا الفرق"
-
-[26-30 ثانية - CTA]
-"احفظ الفيديو وتابعني علمود بعد، واكتبلي بالتعليقات رأيك"
-
-#جاهز_للتصوير''';
+      _script = 'السلام عليكم شباب\nاليوم موضوعنا عن ${_controller.text}\nاول نقطة...';
     });
   }
 
@@ -55,12 +36,11 @@ class _ScriptScreenState extends State<ScriptScreen> {
           children: [
             TextField(
               controller: _controller,
-              style: GoogleFonts.tajawal(fontSize: 16, color: Colors.white),
+              style: GoogleFonts.tajawal(color: Colors.white),
               decoration: InputDecoration(
-                hintText: 'اكتب موضوع الفيديو: كيف اخسر وزن، طبخة سريعة',
+                hintText: 'اكتب موضوع الفيديو',
                 hintStyle: GoogleFonts.tajawal(color: Colors.white38),
-                filled: true,
-                fillColor: const Color(0xFF17171F),
+                filled: true, fillColor: const Color(0xFF17171F),
                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(15), borderSide: BorderSide.none),
               ),
             ),
@@ -68,30 +48,32 @@ class _ScriptScreenState extends State<ScriptScreen> {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: _generateScript,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFFD4AF37),
-                  foregroundColor: Colors.black,
-                  padding: const EdgeInsets.symmetric(vertical: 16),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                ),
-                child: Text('ولدلي سكريبت 30 ثانية', style: GoogleFonts.tajawal(fontSize: 16, fontWeight: FontWeight.bold)),
+                onPressed: _generate,
+                style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFF9C27B0), foregroundColor: Colors.white, padding: const EdgeInsets.symmetric(vertical: 16)),
+                child: Text('ولد السكريبت', style: GoogleFonts.tajawal(fontSize: 16, fontWeight: FontWeight.bold)),
               ),
             ),
             const SizedBox(height: 20),
-            Expanded(
-              child: Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: const Color(0xFF17171F),
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                child: SingleChildScrollView(
-                  child: Text(_script, style: GoogleFonts.tajawal(fontSize: 15, color: Colors.white, height: 1.8)),
+            if (_script.isNotEmpty) ...[
+              Expanded(
+                child: Container(
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(color: const Color(0xFF17171F), borderRadius: BorderRadius.circular(12)),
+                  child: SingleChildScrollView(child: Text(_script, style: GoogleFonts.tajawal(color: Colors.white, fontSize: 16))),
                 ),
               ),
-            )
+              const SizedBox(height: 15),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (_) => VoiceScreen(text: _script, isVip: _isVip)));
+                  },
+                  style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFFD4AF37), foregroundColor: Colors.black, padding: const EdgeInsets.symmetric(vertical: 16)),
+                  child: Text('🎙️ استمع بالصوت - VIP', style: GoogleFonts.tajawal(fontSize: 16, fontWeight: FontWeight.bold)),
+                ),
+              ),
+            ]
           ],
         ),
       ),
