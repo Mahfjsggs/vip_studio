@@ -1,4 +1,4 @@
-package com.vipstudio.app
+package com.example.vip_studio
 
 import io.flutter.embedding.android.FlutterActivity
 
