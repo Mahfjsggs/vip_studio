@@ -13,16 +13,28 @@ class _TextEditorScreenState extends State<TextEditorScreen> {
   String _result = '';
 
   void _improveText() {
+    if (_controller.text.isEmpty) {
+      setState(() => _result = 'الرجاء كتابة نص اولا');
+      return;
+    }
+
+    // هسه بس يطبع رسالة. بعدين نربطه بجيميني
     setState(() {
-      _result = '✨ النص المحسن:\n\n${_controller.text}\n\n#هاشتاك #محتوى #VIP';
+      _result = '''✨ تم تحسين نصك بنجاح ✨
+
+"${_controller.text}"
+
+#تيك_توك_العراق #محتوى_ترند #VIP_Studio
+ملاحظة: ربط الذكاء الاصطناعي سيتم قريبا''';
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFF0A0A0F),
       appBar: AppBar(
-        title: Text('محرر النصوص', style: GoogleFonts.tajawal(fontWeight: FontWeight.bold)),
+        title: Text('محرر النصوص', style: GoogleFonts.tajawal(fontWeight: FontWeight.bold, color: Colors.white)),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
@@ -33,9 +45,9 @@ class _TextEditorScreenState extends State<TextEditorScreen> {
             TextField(
               controller: _controller,
               maxLines: 6,
-              style: GoogleFonts.tajawal(fontSize: 16),
+              style: GoogleFonts.tajawal(fontSize: 16, color: Colors.white),
               decoration: InputDecoration(
-                hintText: 'اكتب فكرتك او النص هنا...',
+                hintText: 'اكتب فكرتك هنا...',
                 hintStyle: GoogleFonts.tajawal(color: Colors.white38),
                 filled: true,
                 fillColor: const Color(0xFF17171F),
@@ -56,7 +68,7 @@ class _TextEditorScreenState extends State<TextEditorScreen> {
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                 ),
-                child: Text('حسن النص بالذكاء الاصطناعي', style: GoogleFonts.tajawal(fontSize: 16, fontWeight: FontWeight.bold)),
+                child: Text('✨ حسن النص', style: GoogleFonts.tajawal(fontSize: 16, fontWeight: FontWeight.bold)),
               ),
             ),
             const SizedBox(height: 20),
@@ -69,7 +81,7 @@ class _TextEditorScreenState extends State<TextEditorScreen> {
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: SingleChildScrollView(
-                  child: Text(_result, style: GoogleFonts.tajawal(fontSize: 15)),
+                  child: Text(_result, style: GoogleFonts.tajawal(fontSize: 15, color: Colors.white, height: 1.6)),
                 ),
               ),
             )
