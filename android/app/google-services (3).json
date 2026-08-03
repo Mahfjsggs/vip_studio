@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "724459478422",
+    "project_id": "reward-app-6ef49",
+    "storage_bucket": "reward-app-6ef49.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:724459478422:android:17e1a9147e0b81d7a411b7",
+        "android_client_info": {
+          "package_name": "com.example.vip_studio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "724459478422-5v1q0dgc7e8699por2l6mmvl05tcq78c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnreZ311pn11kwjxB2QLQoHLpOjSlokS0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "724459478422-5v1q0dgc7e8699por2l6mmvl05tcq78c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:724459478422:android:bd7835b98e1b5c66a411b7",
+        "android_client_info": {
+          "package_name": "com.rewardapp.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "724459478422-5v1q0dgc7e8699por2l6mmvl05tcq78c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnreZ311pn11kwjxB2QLQoHLpOjSlokS0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "724459478422-5v1q0dgc7e8699por2l6mmvl05tcq78c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
