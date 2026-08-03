@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'voice_screen.dart';
 
 class ScriptScreen extends StatefulWidget {
   const ScriptScreen({super.key});
@@ -12,7 +11,6 @@ class ScriptScreen extends StatefulWidget {
 class _ScriptScreenState extends State<ScriptScreen> {
   final TextEditingController _controller = TextEditingController();
   String _script = '';
-  bool _isVip = false;
 
   void _generate() {
     if (_controller.text.isEmpty) return;
@@ -67,7 +65,9 @@ class _ScriptScreenState extends State<ScriptScreen> {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (_) => VoiceScreen(text: _script, isVip: _isVip)));
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('ميزة الصوت قريباً 🎙️')),
+                    );
                   },
                   style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFFD4AF37), foregroundColor: Colors.black, padding: const EdgeInsets.symmetric(vertical: 16)),
                   child: Text('🎙️ استمع بالصوت - VIP', style: GoogleFonts.tajawal(fontSize: 16, fontWeight: FontWeight.bold)),
