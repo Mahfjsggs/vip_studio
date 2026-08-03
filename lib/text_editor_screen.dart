@@ -10,22 +10,23 @@ class TextEditorScreen extends StatefulWidget {
 
 class _TextEditorScreenState extends State<TextEditorScreen> {
   final TextEditingController _controller = TextEditingController();
-  String _result = '';
+  List<String> _ideas = [];
 
-  void _improveText() {
+  void _generateIdeas() {
     if (_controller.text.isEmpty) {
-      setState(() => _result = 'الرجاء كتابة نص اولا');
+      setState(() => _ideas = ['اكتب المجال مالك اول... مثلا: طبخ، جيم، كوميديا']);
       return;
     }
 
-    // هسه بس يطبع رسالة. بعدين نربطه بجيميني
+    // هسه وهمي. بعدين نربطه بجيميني
     setState(() {
-      _result = '''✨ تم تحسين نصك بنجاح ✨
-
-"${_controller.text}"
-
-#تيك_توك_العراق #محتوى_ترند #VIP_Studio
-ملاحظة: ربط الذكاء الاصطناعي سيتم قريبا''';
+      _ideas = [
+        '1. 3 أخطاء يدمرون ${_controller.text} ومحد يحجي عنها',
+        '2. جربت ${_controller.text} لمدة 7 ايام وهذا اللي صار',
+        '3. سر واحد بـ ${_controller.text} يغير حياتك',
+        '4. ليش 90% يفشلون بـ ${_controller.text}',
+        '5. تحدي: ${_controller.text} بس ب 10 دولار',
+      ];
     });
   }
 
@@ -34,7 +35,7 @@ class _TextEditorScreenState extends State<TextEditorScreen> {
     return Scaffold(
       backgroundColor: const Color(0xFF0A0A0F),
       appBar: AppBar(
-        title: Text('محرر النصوص', style: GoogleFonts.tajawal(fontWeight: FontWeight.bold, color: Colors.white)),
+        title: Text('🧠 مولد الافكار', style: GoogleFonts.tajawal(fontWeight: FontWeight.bold, color: Colors.white)),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
@@ -44,45 +45,44 @@ class _TextEditorScreenState extends State<TextEditorScreen> {
           children: [
             TextField(
               controller: _controller,
-              maxLines: 6,
               style: GoogleFonts.tajawal(fontSize: 16, color: Colors.white),
               decoration: InputDecoration(
-                hintText: 'اكتب فكرتك هنا...',
+                hintText: 'اكتب تخصصك: طبخ، رياضة، كوميديا...',
                 hintStyle: GoogleFonts.tajawal(color: Colors.white38),
                 filled: true,
                 fillColor: const Color(0xFF17171F),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
-                  borderSide: BorderSide.none,
-                ),
+                border: OutlineInputBorder(borderRadius: BorderRadius.circular(15), borderSide: BorderSide.none),
               ),
             ),
             const SizedBox(height: 20),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: _improveText,
+                onPressed: _generateIdeas,
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFFD4AF37),
                   foregroundColor: Colors.black,
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                 ),
-                child: Text('✨ حسن النص', style: GoogleFonts.tajawal(fontSize: 16, fontWeight: FontWeight.bold)),
+                child: Text('ولدلي 5 افكار فيروسية', style: GoogleFonts.tajawal(fontSize: 16, fontWeight: FontWeight.bold)),
               ),
             ),
             const SizedBox(height: 20),
             Expanded(
-              child: Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: const Color(0xFF17171F),
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                child: SingleChildScrollView(
-                  child: Text(_result, style: GoogleFonts.tajawal(fontSize: 15, color: Colors.white, height: 1.6)),
-                ),
+              child: ListView.builder(
+                itemCount: _ideas.length,
+                itemBuilder: (context, index) {
+                  return Card(
+                    color: const Color(0xFF17171F),
+                    margin: const EdgeInsets.only(bottom: 12),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                    child: ListTile(
+                      title: Text(_ideas[index], style: GoogleFonts.tajawal(color: Colors.white, fontSize: 15)),
+                      trailing: const Icon(Icons.copy, color: Color(0xFFD4AF37)),
+                    ),
+                  );
+                },
               ),
             )
           ],
