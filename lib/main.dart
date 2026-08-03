@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'screens/text_editor_screen.dart';
-import 'screens/hashtags_screen.dart';
+import 'text_editor_screen.dart';  // شلت كلمة screens/
+import 'hashtags_screen.dart';     // شلت كلمة screens/
 
 void main() {
   runApp(const VIPStudioApp());
@@ -42,7 +42,6 @@ class HomeScreen extends StatelessWidget {
             Text('المرحلة 1: الذكاء', style: GoogleFonts.tajawal(fontSize: 18, color: Colors.white70)),
             const SizedBox(height: 15),
             
-            // زر 1: مولد الافكار
             ElevatedButton(
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (_) => const TextEditorScreen()));
@@ -57,7 +56,6 @@ class HomeScreen extends StatelessWidget {
             ),
             const SizedBox(height: 15),
 
-            // زر 2: الهاشتاكات
             ElevatedButton(
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (_) => const HashtagsScreen()));
@@ -70,7 +68,6 @@ class HomeScreen extends StatelessWidget {
               ),
               child: Text('#️⃣ مولد الهاشتاكات', style: GoogleFonts.tajawal(fontSize: 18)),
             ),
-            
           ],
         ),
       ),
