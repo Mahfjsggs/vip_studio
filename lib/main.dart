@@ -3,7 +3,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'text_editor_screen.dart';
 import 'hashtags_screen.dart';
 import 'script_screen.dart';
-import 'best_time_screen.dart'; // ضفنا هذا
+import 'best_time_screen.dart';
+import 'templates_screen.dart';
+import 'calendar_screen.dart'; // ضفنا هذا
 
 void main() {
   runApp(const VIPStudioApp());
@@ -38,11 +40,10 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
-        child: ListView( // غيرتها من Column الى ListView علمود اذا كثرو الازرار
+        child: ListView(
           children: [
             Text('المرحلة 1: الذكاء', style: GoogleFonts.tajawal(fontSize: 18, color: Colors.white70)),
             const SizedBox(height: 15),
-
             _buildButton(context, '🧠 مولد الافكار', const TextEditorScreen()),
             const SizedBox(height: 15),
             _buildButton(context, '#️⃣ مولد الهاشتاكات', const HashtagsScreen()),
@@ -51,6 +52,12 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(height: 15),
             _buildButton(context, '⏰ أفضل وقت نشر', const BestTimeScreen()),
 
+            const SizedBox(height: 30),
+            Text('المرحلة 2: الفخامة', style: GoogleFonts.tajawal(fontSize: 18, color: Colors.white70)),
+            const SizedBox(height: 15),
+            _buildButton(context, '🎬 قوالب متحركة', const TemplatesScreen()),
+            const SizedBox(height: 15),
+            _buildButton(context, '📅 مخط 30 يوم', const CalendarScreen()), // الجديد
           ],
         ),
       ),
