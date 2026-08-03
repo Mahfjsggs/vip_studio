@@ -8,7 +8,8 @@ import 'templates_screen.dart';
 import 'calendar_screen.dart';
 import 'competitor_screen.dart';
 import 'thumbnail_screen.dart';
-import 'replies_screen.dart'; // ضفناه
+import 'replies_screen.dart';
+import 'analytics_screen.dart'; // ضفناه
 
 void main() {
   runApp(const VIPStudioApp());
@@ -66,7 +67,9 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(height: 15),
             _buildButton(context, '🖼️ مولد صور مصغرة', const ThumbnailScreen()),
             const SizedBox(height: 15),
-            _buildButton(context, '💬 ردود ذكية', const RepliesScreen()), // الجديد
+            _buildButton(context, '💬 ردود ذكية', const RepliesScreen()),
+            const SizedBox(height: 15),
+            _buildButton(context, '📊 لوحة التحليلات', const AnalyticsScreen()), // الجديد
           ],
         ),
       ),
