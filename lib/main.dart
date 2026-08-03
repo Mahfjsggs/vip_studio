@@ -6,7 +6,8 @@ import 'script_screen.dart';
 import 'best_time_screen.dart';
 import 'templates_screen.dart';
 import 'calendar_screen.dart';
-import 'competitor_screen.dart'; // ضفناه
+import 'competitor_screen.dart';
+import 'thumbnail_screen.dart'; // ضفناه
 
 void main() {
   runApp(const VIPStudioApp());
@@ -60,7 +61,9 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(height: 15),
             _buildButton(context, '📅 مخط 30 يوم', const CalendarScreen()),
             const SizedBox(height: 15),
-            _buildButton(context, '🔍 تحليل منافس', const CompetitorScreen()), // الجديد
+            _buildButton(context, '🔍 تحليل منافس', const CompetitorScreen()),
+            const SizedBox(height: 15),
+            _buildButton(context, '🖼️ مولد صور مصغرة', const ThumbnailScreen()), // الجديد
           ],
         ),
       ),
