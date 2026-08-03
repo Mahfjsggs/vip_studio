@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'text_editor_screen.dart';  // شلت كلمة screens/
-import 'hashtags_screen.dart';     // شلت كلمة screens/
+import 'text_editor_screen.dart';
+import 'hashtags_screen.dart';
+import 'script_screen.dart'; // ضفنا هذا
 
 void main() {
   runApp(const VIPStudioApp());
@@ -68,6 +69,22 @@ class HomeScreen extends StatelessWidget {
               ),
               child: Text('#️⃣ مولد الهاشتاكات', style: GoogleFonts.tajawal(fontSize: 18)),
             ),
+            const SizedBox(height: 15),
+
+            // الزر الجديد
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (_) => const ScriptScreen()));
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFF17171F),
+                foregroundColor: Colors.white,
+                padding: const EdgeInsets.symmetric(vertical: 20),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+              ),
+              child: Text('📜 مولد السكريبت', style: GoogleFonts.tajawal(fontSize: 18)),
+            ),
+            
           ],
         ),
       ),
